@@ -1,0 +1,19 @@
+{
+  "name": "echo-server",
+  "version": "1.0.0",
+  "description": "Echo Server using MediaStream",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [
+    "MediaStream",
+    "streaming"
+  ],
+  "author": "Thiago Vicente",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "websocket": "^1.0.34"
+  }
+}

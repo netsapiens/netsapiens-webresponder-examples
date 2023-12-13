@@ -1,0 +1,17 @@
+{
+    "name": "openai-chatbot",
+    "version": "1.0.0",
+    "description": "Chatbot using OpenAI streaming API",
+    "main": "app.js",
+    "scripts": {
+      "start": "node app.js"
+    },
+    "keywords": ["openai", "chatbot", "streaming"],
+    "author": "Thiago Vicente",
+    "license": "MIT",
+    "dependencies": {
+      "express": "^4.17.1",
+      "express-session": "^1.17.2",
+      "openai": "^4.12.0"
+    }
+  }

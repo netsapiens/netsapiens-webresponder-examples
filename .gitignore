@@ -1,0 +1,63 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+.env
+config.json
+
+# PHP
+*.log
+php_errors.log
+composer.phar
+composer.lock
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+*.egg
+*.log
+*.sqlite
+*.db
+*.db-journal
+*.swp
+*.bak
+*.Python
+db.sqlite3
+venv/
+*.venv
+virtualenv/
+*.virtualenv
+.env/
+*.env
+*.env.local
+
+# General
+.DS_Store
+*.log
+*.swo
+*.swn
+*.bak
+*.swp
+*.swm
+*.swo
+*.save
+*.save*
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime*
+*.iml
+
+# OS generated
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
