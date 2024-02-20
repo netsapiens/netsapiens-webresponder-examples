@@ -1,14 +1,15 @@
 class EchoHandler {
     constructor(connection) {
       this.connection = connection;
-      this.streamSid = null;
-  
+      this.stream_id = null;
+      this.isClosed = false;
       connection.on('message', this.processMessage.bind(this));
       connection.on('close', this.close.bind(this));
     }
   
     processMessage(message) {
       if (message.type === 'utf8') {
+        console.log(message.utf8Data);
         const data = JSON.parse(message.utf8Data);
         switch (data.event) {
           case 'connected':
@@ -20,10 +21,7 @@ class EchoHandler {
           case 'media':
             this.echoMedia(data);
             break;
-          case 'mark':
-            this.handleMark(data);
-            break;
-          case 'close':
+          case 'stop':
             this.close();
             break;
           default:
@@ -38,23 +36,23 @@ class EchoHandler {
   
     handleStart(data) {
       console.log('Start event received:', data);
-      this.streamSid = data.streamSid;
+      this.stream_id =  (data.start && data.start.stream_id) || 'defaultSid';
     }
   
     echoMedia(data) {
       this.sendMessage(data);
     }
-  
-    handleMark(data) {
-      console.log('Mark event received:', data);
-    }
-  
+
     sendMessage(message) {
       const messageJSON = JSON.stringify(message);
       this.connection.sendUTF(messageJSON);
     }
   
     close() {
+      if (this.isClosed) {
+        return;
+      }
+      this.isClosed = true;
       console.log('Server: Closed');
     }
   }
