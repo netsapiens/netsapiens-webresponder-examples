@@ -29,9 +29,9 @@ app.all('/record', (req, res) => {
     const baseUrl = `wss://${host}/streams`;
   
   const xmlContent = `<?xml version="1.0" encoding="UTF-8" ?>
-<Connect>
+<Start>
   <Stream url="${baseUrl}"/>
-</Connect>`;
+</Start>`;
   
     res.writeHead(200, {
       'Content-Type': 'text/xml',

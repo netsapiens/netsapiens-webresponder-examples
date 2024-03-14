@@ -31,7 +31,6 @@ class MediaRecorder {
                     this.recordMedia(data);
                     break;
                 case 'stop':
-                    console.log(data);
                     this.close();
                     break;
                 default:
