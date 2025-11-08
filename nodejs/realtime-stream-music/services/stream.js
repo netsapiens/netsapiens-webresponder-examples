@@ -6,6 +6,7 @@ class StreamManager extends EventEmitter {
         super();
         this.connection = connection;
         this.stream_id = null;
+        this.origCallID = null;
         this.inactivityTimeout = setTimeout(() => {
             console.log(`Reached random closing timer`);
             this.close();
@@ -21,7 +22,18 @@ class StreamManager extends EventEmitter {
                     break;
                 case 'start':
                     this.stream_id = data.start.stream_id;
+                    // Extract origCallID from custom parameters
+                    if (data.start.customParameters) {
+                        this.origCallID = data.start.customParameters.origCallID;
+                    }
                     console.log('Stream started:', this.stream_id);
+                    console.log('OrigCallID:', this.origCallID);
+
+                    // Emit a 'started' event so the main handler can trigger the transfer
+                    this.emit('started', {
+                        streamId: this.stream_id,
+                        origCallID: this.origCallID
+                    });
                     break;
                 default:
                     console.log('Unhandled Stream event:', data.event);
